@@ -42,7 +42,9 @@ namespace Core.Scripts
             
             injector.Bind(new InjectionInstantiator(injector));
 
-            // injector.Bind(FindObjectOfType<DataManager>());
+            injector.Bind(FindObjectOfType<ManagerData>());
+            injector.Bind(FindObjectOfType<ViewMainMenu>());
+            
             // injector.Bind(FindObjectOfType<DataAccount>());
             // injector.Bind(FindObjectOfType<SoundManager>());
             //
