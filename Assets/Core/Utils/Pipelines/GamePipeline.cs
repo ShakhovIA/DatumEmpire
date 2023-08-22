@@ -16,13 +16,14 @@ namespace Core.Scripts
 
         private Injector _injector;
         private readonly GamePipelineUpdater _updater = new();
-
-        //[field: SerializeField] private VFXEffect[] VFXEffects;
+        
         [field: SerializeField] private ManagerData ManagerData{ get; set; }
         [field: SerializeField] private ManagerAccount ManagerAccount{ get; set; }
+        [field: SerializeField] private ManagerSound ManagerSound{ get; set; }
         [field: SerializeField] private ViewMainMenu ViewMainMenu { get; set; }
         [field: SerializeField] private WidgetsMainMenu WidgetsMainMenu { get; set; }
         [field: SerializeField] private ViewTotalizator ViewTotalizator { get; set; }
+        [field: SerializeField] private ViewSearchMatch ViewSearchMatch { get; set; }
 
         public void Awake()
         {
@@ -53,9 +54,11 @@ namespace Core.Scripts
 
             injector.Bind(ManagerData);
             injector.Bind(ManagerAccount);
+            injector.Bind(ManagerSound);
             injector.Bind(ViewMainMenu);
             injector.Bind(WidgetsMainMenu);
             injector.Bind(ViewTotalizator);
+            injector.Bind(ViewSearchMatch);
             
             injector.CommitBindings();
             

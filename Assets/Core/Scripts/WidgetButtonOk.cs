@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Injection;
@@ -11,7 +12,7 @@ namespace Core.Scripts
     {
         #region [Injections]
 
-        [Inject] private ManagerData ManagerData { get; set; }
+        [Inject] private ManagerSound ManagerSound { get; set; }
 
         #endregion
         
@@ -42,6 +43,15 @@ namespace Core.Scripts
             
             transform.localScale = Vector3.one;
             transform.DOPunchScale(new Vector2(0.2f,0.2f),0.5f);
+            StartCoroutine(RoutineOpen());
+        }
+
+        public IEnumerator RoutineOpen()
+        {
+            ManagerSound.PlayEffect(ManagerSound.AudioButtonClick);
+            yield return new WaitForSecondsRealtime(0.2f);
+            //ViewTotalizator.Open();
+            //ViewMainMenu.Close();
         }
 
         public void Refresh()

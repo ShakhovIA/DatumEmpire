@@ -13,6 +13,7 @@ namespace Core.Scripts
 
         [Inject] private ViewTotalizator ViewTotalizator { get; set; }
         [Inject] private ViewMainMenu ViewMainMenu { get; set; }
+        [Inject] private ManagerSound ManagerSound { get; set; }
 
         #endregion
         
@@ -50,6 +51,7 @@ namespace Core.Scripts
 
         public IEnumerator RoutineOpen()
         {
+            ManagerSound.PlayEffect(ManagerSound.AudioButtonClick);
             yield return new WaitForSecondsRealtime(0.2f);
             ViewTotalizator.Open();
             ViewMainMenu.Close();

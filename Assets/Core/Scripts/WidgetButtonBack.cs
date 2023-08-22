@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Injection;
@@ -11,7 +12,10 @@ namespace Core.Scripts
     {
         #region [Injections]
 
-        [Inject] private ManagerData ManagerData { get; set; }
+        [Inject] private ViewTotalizator ViewTotalizator { get; set; }
+        [Inject] private ViewMainMenu ViewMainMenu { get; set; }
+        [Inject] private WidgetsMainMenu WidgetsMainMenu { get; set; }
+        [Inject] private ManagerSound ManagerSound { get; set; }
 
         #endregion
         
@@ -38,10 +42,22 @@ namespace Core.Scripts
         public void Click()
         {
             transform.position = StartPosition;
-            transform.DOShakePosition(0.5f,new Vector3(20f,20f));
+            transform.DOPunchPosition(new Vector3(-50f,0f),0.5f,1,0.2f);
             
-            transform.localScale = Vector3.one;
-            transform.DOPunchScale(new Vector2(0.2f,0.2f),0.5f);
+            //transform.localScale = Vector3.one;
+            //transform.DOPunchScale(new Vector2(0.2f,0.2f),0.5f);
+            
+            
+            StartCoroutine(RoutineClose());
+        }
+
+        public IEnumerator RoutineClose()
+        {
+            ManagerSound.PlayEffect(ManagerSound.AudioButtonClick);
+            yield return new WaitForSecondsRealtime(0.4f);
+            ViewTotalizator.Close();
+            ViewMainMenu.Open();
+            WidgetsMainMenu.Open();
         }
 
         public void Refresh()

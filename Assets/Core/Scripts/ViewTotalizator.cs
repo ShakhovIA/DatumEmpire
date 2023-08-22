@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Injection;
 using UnityEngine;
 
@@ -31,6 +32,10 @@ namespace Core.Scripts
             // SelectedContainer.WidgetButtonLimbs.Initialization(this);
             SetDefault();
             SelectedContainer.gameObject.SetActive(true);
+            // SelectedContainer.WidgetButtonCoins.transform.DOPunchPosition(new Vector3(0f, 2000f, 0f), 1f, 1);
+            // SelectedContainer.WidgetButtonLimbs.transform.DOPunchPosition(new Vector3(0f, 2000f, 0f), 1f, 1);
+            // SelectedContainer.WidgetButtonHero.transform.DOPunchPosition(new Vector3(0f, 2000f, 0f), 1f, 1);
+            // SelectedContainer.Background.transform.DOPunchPosition(new Vector3(0f, 3000f, 0f), 1f, 2);
         }
 
         public void Open()
