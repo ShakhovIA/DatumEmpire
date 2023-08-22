@@ -18,20 +18,29 @@ namespace Core.Scripts
         private readonly GamePipelineUpdater _updater = new();
 
         //[field: SerializeField] private VFXEffect[] VFXEffects;
+        [field: SerializeField] private ManagerData ManagerData{ get; set; }
+        [field: SerializeField] private ManagerAccount ManagerAccount{ get; set; }
+        [field: SerializeField] private ViewMainMenu ViewMainMenu { get; set; }
+        [field: SerializeField] private WidgetsMainMenu WidgetsMainMenu { get; set; }
+        [field: SerializeField] private ViewTotalizator ViewTotalizator { get; set; }
 
         public void Awake()
         {
             Application.targetFrameRate = 60;
-            //MetagameEvents.Reset();
             _injector = new Injector();
             InjectComponents(_injector);
             InitializeComponents(_injector);
         }
-        
+
         public void Start()
         {
-            // _injector.Get<PresentationAssets>().IngameDebugConsole.SetActive(Static.BuildMode == BuildMode.Development);
-            // StartCoroutine(_injector.Get<StartupScriptSystem>().Run());
+            
+        }
+
+        public void BindingComponent<T>(T obj)
+        {
+            _injector.Bind(obj);
+            _injector.CommitBindings();
         }
 
         private void InjectComponents(Injector injector)
@@ -42,43 +51,48 @@ namespace Core.Scripts
             
             injector.Bind(new InjectionInstantiator(injector));
 
-            injector.Bind(FindObjectOfType<ManagerData>());
-            injector.Bind(FindObjectOfType<ViewMainMenu>());
+            injector.Bind(ManagerData);
+            injector.Bind(ManagerAccount);
+            injector.Bind(ViewMainMenu);
+            injector.Bind(WidgetsMainMenu);
+            injector.Bind(ViewTotalizator);
             
-            // injector.Bind(FindObjectOfType<DataAccount>());
-            // injector.Bind(FindObjectOfType<SoundManager>());
-            //
-            // injector.Bind(FindObjectOfType<JsonManager>());
-            //
-            // injector.Bind(FindObjectOfType<ViewManager>());
-            // injector.Bind(FindObjectOfType<ViewMenu>());
-            // injector.Bind(FindObjectOfType<ViewGame>());
-            // injector.Bind(FindObjectOfType<ViewCategory>());
-            // injector.Bind(FindObjectOfType<ViewMyPuzzles>());
-            // injector.Bind(FindObjectOfType<ViewMenuWidgets>());
-            //
-            // injector.Bind(FindObjectOfType<PopupSettings>());
-            // injector.Bind(FindObjectOfType<PopupAuthors>());
-            // injector.Bind(FindObjectOfType<PopupNewPuzzle>());
-            // injector.Bind(FindObjectOfType<PopupOffer>());
-            // injector.Bind(FindObjectOfType<PopupQuests>());
-            // injector.Bind(FindObjectOfType<PopupUnlockPuzzle>());
-            // injector.Bind(FindObjectOfType<PopupVictory>());
-            // injector.Bind(FindObjectOfType<PopupContinuePuzzle>());
-            // injector.Bind(FindObjectOfType<PopupChangeDifficulty>());
-            // injector.Bind(FindObjectOfType<PopupEncouragement>());
-            // injector.Bind(FindObjectOfType<PopupTutorial>());
-            // injector.Bind(FindObjectOfType<PopupDailyReward>());
-            // injector.Bind(FindObjectOfType<PopupShop>());
-            // injector.Bind(FindObjectOfType<PopupAdsDisable>());
-            // injector.Bind(FindObjectOfType<PopupAdblock>());
-            //
-            // injector.Bind(new VFXCreator(VFXEffects));
-            // injector.Bind(new GridHelper<GridScript>());
-            // injector.Bind(new PriceBuilder());
+            injector.CommitBindings();
+            
+            InitializeViews();
+            ManagerData.SelectPlatformMobile();
+            
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetOffers);
+            WidgetsMainMenu.SelectedContainer.WidgetsCurrencies.ForEach(x=>injector.InjectTo(x));
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetSettings);
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetBattlePass);
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetDailyQuest);
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetLuckyTicket);
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetLuckyWheel);
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetSlotMachine);
+            injector.Bind(WidgetsMainMenu.SelectedContainer.WidgetButtonPlay);
+            
+            injector.Bind(ViewTotalizator.SelectedContainer.WidgetButtonCoins);
+            injector.Bind(ViewTotalizator.SelectedContainer.WidgetButtonHero);
+            injector.Bind(ViewTotalizator.SelectedContainer.WidgetButtonLimbs);
+            injector.Bind(ViewTotalizator.SelectedContainer.WidgetButtonBack);
+            injector.Bind(ViewTotalizator.SelectedContainer.WidgetButtonOk);
+            
+            injector.Bind(ViewTotalizator.SelectedContainer.WidgetCoinsPanel);
+            ViewTotalizator.SelectedContainer.WidgetCoinsPanel.WidgetButtonCoinMultipliers.ForEach(x => injector.InjectTo(x));
+            
 
             injector.CommitBindings();
+            
+            ManagerData.GameStart();
 
+        }
+
+        private void InitializeViews()
+        {
+            ManagerData.AddIView(ViewMainMenu);
+            ManagerData.AddIView(WidgetsMainMenu);
+            ManagerData.AddIView(ViewTotalizator);
         }
 
         private void InitializeComponents(Injector injector)

@@ -16,7 +16,7 @@ namespace Core.Scripts
         #region [Fields]
 
         [field: SerializeField] private List<ContainerViewMainMenu> Containers { get; set; }
-        private ContainerViewMainMenu SelectedContainer { get; set; }
+        public ContainerViewMainMenu SelectedContainer { get; private set; }
 
         #endregion
         
@@ -31,12 +31,12 @@ namespace Core.Scripts
 
         public void Open()
         {
-            
+            SelectedContainer.gameObject.SetActive(true);
         }
         
         public void Close()
         {
-            
+            SelectedContainer.gameObject.SetActive(false);
         }
         
         #endregion

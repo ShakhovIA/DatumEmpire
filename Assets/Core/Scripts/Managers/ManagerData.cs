@@ -6,20 +6,20 @@ using UnityEngine.UI;
 
 namespace Core.Scripts
 {
-    public class ManagerData : MonoBehaviour
+    public sealed class ManagerData : MonoBehaviour
     {
         #region [Injections]
         
         [Inject] private ViewMainMenu ViewMainMenu { get; set; }
+        [Inject] private WidgetsMainMenu WidgetsMainMenu { get; set; }
         
         #endregion
         
         
         #region [Fields]
-
         [field: SerializeField] public EnumResolution TypeResolution { get; set; }
         [field:SerializeField] public CanvasScaler CanvasScaleGame { get; private set; }
-        private List<IView> IViews { get; set; }
+        private List<IView> IViews { get; set; } = new List<IView>();
 
         #endregion
         
@@ -29,12 +29,17 @@ namespace Core.Scripts
 
         public void Start()
         {
-            IViews = new List<IView>();
-            var tempViews = FindObjectsOfType<MonoBehaviour>().OfType<IView>();
-            foreach (var view in tempViews)
-            {
-                IViews.Add(view);
-            }
+            // IViews = new List<IView>();
+            // var tempViews = FindObjectsOfType<MonoBehaviour>().OfType<IView>();
+            // foreach (var view in tempViews)
+            // {
+            //     IViews.Add(view);
+            // }
+        }
+        
+        public void AddIView(IView data)
+        {
+            IViews.Add(data);
         }
 
         public void SelectPlatformMobile()
@@ -49,6 +54,13 @@ namespace Core.Scripts
             TypeResolution = EnumResolution.Horizontal;
             CanvasScaleGame.referenceResolution = new Vector2(1920, 1080);
             IViews.ForEach(x=>x.SetResolution());
+        }
+
+        public void GameStart()
+        {
+            IViews.ForEach(x=>x.Close());
+            ViewMainMenu.Open();
+            WidgetsMainMenu.Open();
         }
         
         

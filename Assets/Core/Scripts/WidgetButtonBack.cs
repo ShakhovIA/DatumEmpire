@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Injection;
 using UnityEngine;
@@ -7,12 +7,11 @@ using UnityEngine.UI;
 
 namespace Core.Scripts
 {
-    public class WidgetButtonPlay : MonoBehaviour, IWidget
+    public class WidgetButtonBack : MonoBehaviour, IWidget
     {
         #region [Injections]
 
-        [Inject] private ViewTotalizator ViewTotalizator { get; set; }
-        [Inject] private ViewMainMenu ViewMainMenu { get; set; }
+        [Inject] private ManagerData ManagerData { get; set; }
 
         #endregion
         
@@ -24,7 +23,7 @@ namespace Core.Scripts
         #endregion
         
         #region [Functions]
-
+        
         public void Start()
         {
             StartPosition = transform.position;
@@ -38,21 +37,11 @@ namespace Core.Scripts
 
         public void Click()
         {
-            
             transform.position = StartPosition;
             transform.DOShakePosition(0.5f,new Vector3(20f,20f));
             
             transform.localScale = Vector3.one;
-            transform.DOPunchScale(new Vector2(0.2f,0.2f),0.4f);
-
-            StartCoroutine(RoutineOpen());
-        }
-
-        public IEnumerator RoutineOpen()
-        {
-            yield return new WaitForSecondsRealtime(0.2f);
-            ViewTotalizator.Open();
-            ViewMainMenu.Close();
+            transform.DOPunchScale(new Vector2(0.2f,0.2f),0.5f);
         }
 
         public void Refresh()

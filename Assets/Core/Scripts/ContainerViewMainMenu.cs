@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,7 @@ namespace Core.Scripts
         [field: SerializeField] public EnumResolution TypeResolution { get; private set; }
         [field: SerializeField] public Image ImageCharacter { get; private set; }
         [field: SerializeField] public GameObject ParentCharacter { get; private set; }
-        
+
         #endregion
     }
 }
