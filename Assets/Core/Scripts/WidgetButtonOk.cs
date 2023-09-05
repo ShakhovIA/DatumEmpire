@@ -13,6 +13,9 @@ namespace Core.Scripts
         #region [Injections]
 
         [Inject] private ManagerSound ManagerSound { get; set; }
+        [Inject] private ViewMainMenu ViewMainMenu { get; set; }
+        [Inject] private ViewSearchMatch ViewSearchMatch { get; set; }
+        [Inject] private ViewTotalizator ViewTotalizator { get; set; }
 
         #endregion
         
@@ -50,8 +53,8 @@ namespace Core.Scripts
         {
             ManagerSound.PlayEffect(ManagerSound.AudioButtonClick);
             yield return new WaitForSecondsRealtime(0.2f);
-            //ViewTotalizator.Open();
-            //ViewMainMenu.Close();
+            ViewSearchMatch.Open();
+            ViewTotalizator.Close();
         }
 
         public void Refresh()

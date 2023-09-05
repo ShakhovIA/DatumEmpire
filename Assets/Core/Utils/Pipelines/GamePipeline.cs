@@ -96,6 +96,7 @@ namespace Core.Scripts
             ManagerData.AddIView(ViewMainMenu);
             ManagerData.AddIView(WidgetsMainMenu);
             ManagerData.AddIView(ViewTotalizator);
+            ManagerData.AddIView(ViewSearchMatch);
         }
 
         private void InitializeComponents(Injector injector)

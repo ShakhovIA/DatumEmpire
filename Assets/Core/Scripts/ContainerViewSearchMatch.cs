@@ -16,7 +16,9 @@ namespace Core.Scripts
         [field: SerializeField] public WidgetButtonOk WidgetButtonOk { get; private set; }
         [field: SerializeField] public WidgetButtonBack WidgetButtonBack { get; private set; }
         [field: SerializeField] public WidgetCoinsPanel WidgetCoinsPanel { get; private set; }
-        
+
+        [field: SerializeField] public RectTransform[] EnemyStrips { get; private set; }
+
         #endregion
     }
 }
