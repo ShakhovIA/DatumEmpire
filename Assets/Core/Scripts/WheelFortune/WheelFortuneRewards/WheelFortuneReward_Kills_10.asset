@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3fa993a4c87a43438656287aac463cd, type: 3}
+  m_Name: WheelFortuneReward_Kills_10
+  m_EditorClassIdentifier: 
+  id: 777
+  icon: {fileID: 21300000, guid: 8ea71a2337af74f198e6019b8dfea016, type: 3}
+  reward:
+    value:
+      migratedVersion: 
+      currentCryptoKey: 5319954647610504339
+      hiddenValue: -8002886338095115468
+      hiddenValueOldByte8:
+        b1: 0
+        b2: 0
+        b3: 0
+        b4: 0
+        b5: 0
+        b6: 0
+        b7: 0
+        b8: 0
+      inited: 1
+      fakeValue: 10
+      fakeValueActive: 1
+    type: 1
+    duration:
+      migratedVersion: 
+      currentCryptoKey: 1705388170
+      hiddenValue: 1705413160
+      hiddenValueOldByte8:
+        b1: 0
+        b2: 0
+        b3: 0
+        b4: 0
+        b5: 0
+        b6: 0
+        b7: 0
+        b8: 0
+      inited: 1
+      fakeValue: 0
+      fakeValueActive: 1
+    chanceDrop:
+      migratedVersion: 
+      currentCryptoKey: 1171702807258673510
+      hiddenValue: 9081034457510274609
+      hiddenValueOldByte8:
+        b1: 0
+        b2: 0
+        b3: 0
+        b4: 0
+        b5: 0
+        b6: 0
+        b7: 0
+        b8: 0
+      inited: 1
+      fakeValue: 40
+      fakeValueActive: 1
