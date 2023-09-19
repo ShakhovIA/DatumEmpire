@@ -24,6 +24,7 @@ namespace Core.Scripts
         [field: SerializeField] private WidgetsMainMenu WidgetsMainMenu { get; set; }
         [field: SerializeField] private ViewTotalizator ViewTotalizator { get; set; }
         [field: SerializeField] private ViewSearchMatch ViewSearchMatch { get; set; }
+        [field: SerializeField] private ViewGame ViewGame { get; set; }
 
         public void Awake()
         {
@@ -59,6 +60,7 @@ namespace Core.Scripts
             injector.Bind(WidgetsMainMenu);
             injector.Bind(ViewTotalizator);
             injector.Bind(ViewSearchMatch);
+            injector.Bind(ViewGame);
             
             injector.CommitBindings();
             
@@ -97,6 +99,7 @@ namespace Core.Scripts
             ManagerData.AddIView(WidgetsMainMenu);
             ManagerData.AddIView(ViewTotalizator);
             ManagerData.AddIView(ViewSearchMatch);
+            ManagerData.AddIView(ViewGame);
         }
 
         private void InitializeComponents(Injector injector)

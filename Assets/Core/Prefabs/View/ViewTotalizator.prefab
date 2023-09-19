@@ -1244,7 +1244,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1228199938d0e4b4e98bb634c010c70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 0}
+  <OnClick>k__BackingField:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7493999998991228055}
+        m_TargetAssemblyTypeName: Core.Scripts.ViewTotalizator, Assembly-CSharp
+        m_MethodName: OnBack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7493999998603745966
 GameObject:
   m_ObjectHideFlags: 0
@@ -2055,7 +2069,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7493999998991228052}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99ad6fb5b8c2ef74cbc39886c292f93c, type: 3}
+  m_Script: {fileID: 11500000, guid: 51b1fb21aee5ca74d9fb5d3512b19b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <Containers>k__BackingField:
@@ -2602,6 +2616,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <WidgetButtonCoinMultipliers>k__BackingField: []
   <CoinText>k__BackingField: {fileID: 0}
+  <imgHero>k__BackingField: {fileID: 0}
+  <sliderExperience>k__BackingField: {fileID: 0}
+  <tmpExperience>k__BackingField: {fileID: 0}
+  <tmpNickname>k__BackingField: {fileID: 0}
+  <tmpLvl>k__BackingField: {fileID: 0}
+  <characterPart>k__BackingField: {fileID: 0}
 --- !u!1 &7493999999530394799
 GameObject:
   m_ObjectHideFlags: 0

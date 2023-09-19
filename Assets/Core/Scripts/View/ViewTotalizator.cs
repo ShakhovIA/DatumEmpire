@@ -11,6 +11,7 @@ namespace Core.Scripts
         #region [Injections]
 
         [Inject] private ManagerData ManagerData { get; set; }
+        [Inject] private ViewMainMenu ViewMainMenu { get; set; }
 
         #endregion
         
@@ -46,6 +47,12 @@ namespace Core.Scripts
         public void Close()
         {
             SelectedContainer.gameObject.SetActive(false);
+        }
+
+        public void OnBack()
+        {
+            Close();
+            ViewMainMenu.Open();
         }
 
         public void OpenCoins()

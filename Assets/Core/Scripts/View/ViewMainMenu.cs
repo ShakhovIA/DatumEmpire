@@ -26,7 +26,6 @@ namespace Core.Scripts
 
         public void Initialization()
         {
-            
         }
 
         public void Open()

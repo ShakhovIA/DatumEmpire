@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using Injection;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace Core.Scripts
 {
@@ -12,52 +10,50 @@ namespace Core.Scripts
     {
         #region [Injections]
 
-        [Inject] private ViewTotalizator ViewTotalizator { get; set; }
-        [Inject] private ViewMainMenu ViewMainMenu { get; set; }
-        [Inject] private WidgetsMainMenu WidgetsMainMenu { get; set; }
         [Inject] private ManagerSound ManagerSound { get; set; }
 
         #endregion
         
         #region [Fields]
 
-        [field: SerializeField] private Image Icon { get; set; }
-        private Vector3 StartPosition { get; set; }
+        [field: SerializeField] private UnityEvent OnClick { get; set; }
+        private Sequence sequenceClickAnim;
 
         #endregion
-        
+
         #region [Functions]
-        
-        public void Start()
-        {
-            StartPosition = transform.position;
-        }
-
-
         public void Initialization()
         {
             
         }
 
-        public void Click()
-        {
-            transform.position = StartPosition;
-            transform.DOPunchPosition(new Vector3(-50f,0f),0.5f,1,0.2f);
-            
-            //transform.localScale = Vector3.one;
-            //transform.DOPunchScale(new Vector2(0.2f,0.2f),0.5f);
-            
-            
-            StartCoroutine(RoutineClose());
-        }
+        public void Click() => StartCoroutine(CoroutineClick());
 
-        public IEnumerator RoutineClose()
+        private IEnumerator CoroutineClick()
         {
-            ManagerSound.PlayEffect(ManagerSound.AudioButtonClick);
-            yield return new WaitForSecondsRealtime(0.4f);
-            ViewTotalizator.Close();
-            ViewMainMenu.Open();
-            WidgetsMainMenu.Open();
+            //ManagerSound.PlayEffect(ManagerSound.AudioButtonClick);
+
+            if (sequenceClickAnim != null && sequenceClickAnim.active)
+            {
+                sequenceClickAnim.Restart();
+                OnClick?.Invoke();
+                yield break;
+            }
+
+            Vector3 initialPos = transform.position;
+            sequenceClickAnim = DOTween.Sequence();
+            sequenceClickAnim
+                .Append(transform.DOShakePosition(0.5f, new Vector3(20f, 20f)))
+                .Join(transform.DOPunchScale(new Vector2(0.2f, 0.2f), 0.5f))
+                .OnComplete(() =>
+                {
+                    transform.localScale = Vector3.one;
+                    transform.position = initialPos;
+                });
+
+            yield return new WaitForSecondsRealtime(.4f);
+
+            OnClick?.Invoke();
         }
 
         public void Refresh()

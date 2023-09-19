@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1125037388237515667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1125037388237515666}
+  - component: {fileID: 1125037388237515757}
+  - component: {fileID: 1125037388237515756}
+  m_Layer: 0
+  m_Name: ManagerData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1125037388237515666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125037388237515667}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1125037388237515757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125037388237515667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b0a655816c4e14e8100a47f2ca15fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <TypeResolution>k__BackingField: 1
+  <CanvasScaleGame>k__BackingField: {fileID: 0}
+  <HeroSprites>k__BackingField:
+  - {fileID: 21300000, guid: d6deae32ad9f55b45a23e6f478158ff2, type: 3}
+  - {fileID: 21300000, guid: d80e4ccff892d9948b9dad3c473ae705, type: 3}
+  - {fileID: 21300000, guid: c3c5d4e4104726a4fb83a1779ce9111f, type: 3}
+  - {fileID: 21300000, guid: 94addfbf086a9a6438117b3e113824c9, type: 3}
+  - {fileID: 21300000, guid: 029e8512e83bbc24594cc471396e3e14, type: 3}
+  - {fileID: 21300000, guid: 88f5a4e2fa766404888be6f166ff2614, type: 3}
+  - {fileID: 21300000, guid: ae6f3e3d397ad074186b7be1e5729b42, type: 3}
+  - {fileID: 21300000, guid: 7fa756bfed4fd934d8b569f8736405c8, type: 3}
+  - {fileID: 21300000, guid: 5b94fe86fd8f98f419cb09acc142e298, type: 3}
+  - {fileID: 21300000, guid: 705c0cda824fdda49a7c6d569c7bdfc0, type: 3}
+  - {fileID: 21300000, guid: be05e4ed1ad33bd43bef5a0dca8e9516, type: 3}
+  - {fileID: 21300000, guid: 6e420b22873ba184c9b5e12130a57021, type: 3}
+  - {fileID: 21300000, guid: e4999969f5f8f424f9266281dbbd7263, type: 3}
+  - {fileID: 21300000, guid: cd37a1aedaeb73a4b8b6050e36bb3a9d, type: 3}
+  <PrefabWidgetHeroesPanel>k__BackingField: {fileID: 895007744123770136, guid: 04146c3e340f20240bebccdb550f45fd, type: 3}
+--- !u!114 &1125037388237515756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125037388237515667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09fd54fda1064639baff0fe84323e9fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <ManagerData>k__BackingField: {fileID: 1125037388237515757}
+  <ManagerAccount>k__BackingField: {fileID: 0}
+  <ManagerSound>k__BackingField: {fileID: 0}
+  <ViewMainMenu>k__BackingField: {fileID: 0}
+  <WidgetsMainMenu>k__BackingField: {fileID: 0}
+  <ViewTotalizator>k__BackingField: {fileID: 0}
+  <ViewSearchMatch>k__BackingField: {fileID: 0}
+  <ViewGame>k__BackingField: {fileID: 0}

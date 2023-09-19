@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Injection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Core.Scripts
 {
@@ -15,9 +16,16 @@ namespace Core.Scripts
         #endregion
         
         #region [Fields]
+        public Sprite Sprite { set => imgHero.sprite = value; }
 
         [field: SerializeField] public List<WidgetButtonCoinMultiplier> WidgetButtonCoinMultipliers { get; private set; }
         [field: SerializeField] private TMP_Text CoinText { get;  set; }
+        [field: SerializeField] private Image imgHero { get;  set; }
+        [field: SerializeField] private Slider sliderExperience { get;  set; }
+        [field: SerializeField] private TMP_Text tmpExperience { get;  set; }
+        [field: SerializeField] private TMP_Text tmpNickname { get;  set; }
+        [field: SerializeField] private TMP_Text tmpLvl { get;  set; }
+        [field: SerializeField] private GameObject characterPart { get;  set; }
 
         #endregion
         
@@ -55,6 +63,28 @@ namespace Core.Scripts
         {
             gameObject.SetActive(false);
         }
+
+        public void ShowMenuWidgets()
+        {
+            SetActiveExperience(true);
+            SetActiveCharacterPart(false);
+            SetActiveNickname(false);
+            SetActiveLvl(false);
+        }
+
+        private void SetExperience(float value)
+        {
+            sliderExperience.value = Mathf.Clamp01(0.2f);
+            tmpExperience.text = "200/9999";
+        }
+
+        private void SetActiveExperience(bool value) => sliderExperience.gameObject.SetActive(value);
+
+        private void SetActiveCharacterPart(bool value) => characterPart.SetActive(value);
+
+        private void SetActiveNickname(bool value) => tmpNickname.gameObject.SetActive(value);
+
+        private void SetActiveLvl(bool value) => tmpLvl.gameObject.SetActive(value);
 
         #endregion
     }

@@ -19,6 +19,8 @@ namespace Core.Scripts
         #region [Fields]
         [field: SerializeField] public EnumResolution TypeResolution { get; set; }
         [field:SerializeField] public CanvasScaler CanvasScaleGame { get; private set; }
+        [field: SerializeField] public Sprite[] HeroSprites { get; private set; }
+        [field: SerializeField] public WidgetHeroesPanel PrefabWidgetHeroesPanel { get; private set; }
         private List<IView> IViews { get; set; } = new List<IView>();
 
         #endregion
@@ -59,8 +61,8 @@ namespace Core.Scripts
         public void GameStart()
         {
             IViews.ForEach(x=>x.Close());
-            ViewMainMenu.Open();
             WidgetsMainMenu.Open();
+            ViewMainMenu.Open();
         }
         
         

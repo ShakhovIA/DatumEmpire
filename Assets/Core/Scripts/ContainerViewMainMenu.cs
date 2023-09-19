@@ -8,8 +8,6 @@ namespace Core.Scripts
     {
         #region [Fields]
         [field: SerializeField] public EnumResolution TypeResolution { get; private set; }
-        [field: SerializeField] public Image ImageCharacter { get; private set; }
-        [field: SerializeField] public GameObject ParentCharacter { get; private set; }
 
         #endregion
     }
